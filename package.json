@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/electron main.js",
-    "wind:dist": "build"
+    "start": "./node_modules/.bin/electron index.js",
+    "build": "./node_modules/.bin/electron-builder"
   },
   "keywords": [],
   "author": "",
