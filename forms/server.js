@@ -7,10 +7,12 @@ const txtHost = document.getElementById('txtHost')
 const txtPort = document.getElementById('txtPort')
 const txtDir = document.getElementById('txtDir')
 const btnRun = document.getElementById('btnRun')
+const btnStop = document.getElementById('btnStop')
 const lbMessage = document.getElementById('lbMessage')
 const containerLogs = document.getElementById('logs')
 
 const appExpress = express()
+let server
 
 const preResponse = function (req, res, next) {
   var log = document.createElement('CODE')
@@ -21,6 +23,10 @@ const preResponse = function (req, res, next) {
   //console.log(req.method + '/' + req.path)
   next()
 }
+
+btnStop.addEventListener('click', function(event){
+  server.close()
+})
 
 btnRun.addEventListener('click', function(event){
   event.preventDefault();   // stop the form from submitting
@@ -44,7 +50,7 @@ btnRun.addEventListener('click', function(event){
     appExpress.use(logger('dev'))
     appExpress.use(preResponse)
     appExpress.use(express.static(path.join(dir)))
-    appExpress.listen(port, function () {
+    server = appExpress.listen(port, function () {
       console.log('Example app listening on port ' + port + '!');
     });  
     ipcRenderer.send('start-server', host, port)
