@@ -8,15 +8,19 @@ const txtPort = document.getElementById('txtPort')
 const txtDir = document.getElementById('txtDir')
 const btnRun = document.getElementById('btnRun')
 const lbMessage = document.getElementById('lbMessage')
+const containerLogs = document.getElementById('logs')
 
 const appExpress = express()
 
 const preResponse = function (req, res, next) {
-  console.log(req.method + '/' + req.path)
-  
+  var log = document.createElement('CODE')
+  log.innerHTML = req.method + req.path
+  containerLogs.appendChild(log)
+  var br = document.createElement('BR')
+  containerLogs.appendChild(br)
+  //console.log(req.method + '/' + req.path)
   next()
 }
-
 
 btnRun.addEventListener('click', function(event){
   event.preventDefault();   // stop the form from submitting
