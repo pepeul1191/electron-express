@@ -15,17 +15,27 @@ const appExpress = express()
 let server
 
 const preResponse = function (req, res, next) {
-  var log = document.createElement('CODE')
-  log.innerHTML = req.method + req.path
-  containerLogs.appendChild(log)
-  var br = document.createElement('BR')
-  containerLogs.appendChild(br)
+  printLog(req.method + req.path, 'TODO')
   //console.log(req.method + '/' + req.path)
   next()
 }
 
+function printLog(message, status){
+  var log = document.createElement('CODE')
+  log.innerHTML = message
+  containerLogs.appendChild(log)
+  var br = document.createElement('BR')
+  containerLogs.appendChild(br)
+}
+
 btnStop.addEventListener('click', function(event){
   server.close()
+  btnRun.disabled = false
+  btnStop.disabled = true
+  txtDir.disabled = false
+  txtHost.disabled = false
+  txtPort.disabled = false
+  printLog('El servidor se ha detenido', 'success')
 })
 
 btnRun.addEventListener('click', function(event){
@@ -52,7 +62,13 @@ btnRun.addEventListener('click', function(event){
     appExpress.use(express.static(path.join(dir)))
     server = appExpress.listen(port, function () {
       console.log('Example app listening on port ' + port + '!');
+      printLog('Servidor arrancó en el puerto ' + port, 'success')
     });  
+    btnRun.disabled = true
+    txtDir.disabled = true
+    txtHost.disabled = true
+    txtPort.disabled = true
+    btnStop.disabled = false
     ipcRenderer.send('start-server', host, port)
   }
 });
