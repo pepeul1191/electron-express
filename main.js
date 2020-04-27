@@ -1,8 +1,13 @@
 const electron = require('electron')
-const {app, BrowserWindow} = electron
+const {app, BrowserWindow, ipcMain} = electron
+
+ipcMain.on('start-server', (event, host, port) => {
+  console.log('++++++++++++++++++++++++++')
+  console.log(host)
+  console.log(port)
+});  
 
 function createWindow () {
-  // Crea la ventana del navegador.
   let win = new BrowserWindow({
     width: 800,
     height: 600,
@@ -10,7 +15,6 @@ function createWindow () {
       nodeIntegration: true
     }
   })
-  // y carga el  index.html de la aplicación.
   win.loadFile('views/index.html')
 }
 
