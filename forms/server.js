@@ -51,9 +51,9 @@ btnRun.addEventListener('click', function(event){
     port = '3000'
   }
   if(dir == ''){
-    dir = '/home/pepe/Imágenes'
-    // next = false
-    // lbMessage.innerHTML = 'Debe ingresar una ruta de su disco'
+    // dir = '/home/pepe/Imágenes'
+    next = false
+    lbMessage.innerHTML = 'Debe ingresar una ruta de su disco'
   }
   if(next){
     // run epxress server

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/electron main.js"
+    "start": "./node_modules/.bin/electron main.js",
+    "wind:dist": "build"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +17,12 @@
   },
   "devDependencies": {
     "electron": "^8.2.3"
+  },
+  "build": {
+    "appId": "pe.softweb.server",
+    "win": {
+      "target": "nsis",
+      "icon": "build/favicon.ico"
+    }
   }
 }
