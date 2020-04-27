@@ -11,8 +11,15 @@ const lbMessage = document.getElementById('lbMessage')
 
 const appExpress = express()
 
+const preResponse = function (req, res, next) {
+  console.log(req.method + '/' + req.path)
+  
+  next()
+}
+
+
 btnRun.addEventListener('click', function(event){
-  // event.preventDefault();   // stop the form from submitting
+  event.preventDefault();   // stop the form from submitting
   let host = txtHost.value
   let port = txtPort.value
   let dir = txtDir.value
@@ -24,15 +31,18 @@ btnRun.addEventListener('click', function(event){
     port = '3000'
   }
   if(dir == ''){
-    next = false
-    lbMessage.innerHTML = 'Debe ingresar una ruta de su disco'
+    dir = '/home/pepe/Imágenes'
+    // next = false
+    // lbMessage.innerHTML = 'Debe ingresar una ruta de su disco'
   }
   if(next){
-    // 
+    // run epxress server
     appExpress.use(logger('dev'))
+    appExpress.use(preResponse)
     appExpress.use(express.static(path.join(dir)))
     appExpress.listen(port, function () {
       console.log('Example app listening on port ' + port + '!');
     });  
+    ipcRenderer.send('start-server', host, port)
   }
 });

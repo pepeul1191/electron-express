@@ -2,6 +2,7 @@ const electron = require('electron')
 const {app, BrowserWindow, ipcMain} = electron
 
 ipcMain.on('start-server', (event, host, port) => {
+  console.log('start-server')
   console.log(host)
   console.log(port)
 });  
