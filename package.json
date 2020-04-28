@@ -1,5 +1,5 @@
 {
-  "name": "serv",
+  "name": "servidor-de-archivos-express",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -24,7 +24,7 @@
     "appId": "pe.softweb.server",
     "win": {
       "target": "nsis",
-      "icon": "src/asstes/favicon.ico"
+      "icon": "src/assets/img/favicon.ico"
     }
   }
 }

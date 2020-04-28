@@ -1,5 +1,5 @@
 const electron = require('electron')
-require('electron-reload')(__dirname)
+// require('electron-reload')(__dirname)
 const {app, BrowserWindow, ipcMain} = electron
 
 ipcMain.on('start-server', (event, host, port) => {
