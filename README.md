@@ -17,3 +17,4 @@ Fuentes:
 + https://www.youtube.com/watch?v=XEBcBEM9Zj4
 + https://medium.com/how-to-electron/a-complete-guide-to-packaging-your-electron-app-1bdc717d739f
 + https://ourcodeworld.com/articles/read/524/how-to-use-live-reload-in-your-electron-project
++ http://photonkit.com/getting-started/

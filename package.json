@@ -24,7 +24,7 @@
     "appId": "pe.softweb.server",
     "win": {
       "target": "nsis",
-      "icon": "build/favicon.ico"
+      "icon": "src/asstes/favicon.ico"
     }
   }
 }

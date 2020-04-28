@@ -1,0 +1,17 @@
+.dark-background{
+  background: #343434;
+  color: #FDFDFD;
+  width: 400px;
+}
+
+.color-yellow{
+  color: #ffdd55;
+}
+
+.bold{
+  font-weight: 800;
+}
+
+.color-error{
+  color: #ff8080;
+}

@@ -15,14 +15,24 @@ const appExpress = express()
 let server
 
 const preResponse = function (req, res, next) {
-  printLog(req.method + req.path, 'TODO')
+  printLog(req.method + req.path, 'TODO', 'pre-response')
   //console.log(req.method + '/' + req.path)
   next()
 }
 
-function printLog(message, status){
+function printLog(message, status, type){
+  // pre-response, start, stop
+  if(type == 'pre-response'){
+    var span = document.createElement('SPAN')
+    span.innerHTML = '> '
+    span.classList = 'color-yellow bold'
+    containerLogs.appendChild(span)
+  }
   var log = document.createElement('CODE')
   log.innerHTML = message
+  if(status == 'error'){
+    log.classList = 'color-error'
+  }
   containerLogs.appendChild(log)
   var br = document.createElement('BR')
   containerLogs.appendChild(br)
@@ -35,7 +45,7 @@ btnStop.addEventListener('click', function(event){
   txtDir.disabled = false
   txtHost.disabled = false
   txtPort.disabled = false
-  printLog('El servidor se ha detenido', 'success')
+  printLog('El servidor se ha detenido', 'success', 'stop')
 })
 
 btnRun.addEventListener('click', function(event){
@@ -53,7 +63,7 @@ btnRun.addEventListener('click', function(event){
   if(dir == ''){
     // dir = '/home/pepe/Imágenes'
     next = false
-    lbMessage.innerHTML = 'Debe ingresar una ruta de su disco'
+    printLog('Debe ingresar una ruta de su disco', 'error', 'error')
   }
   if(next){
     // run epxress server
@@ -62,7 +72,7 @@ btnRun.addEventListener('click', function(event){
     appExpress.use(express.static(path.join(dir)))
     server = appExpress.listen(port, function () {
       console.log('Example app listening on port ' + port + '!');
-      printLog('Servidor arrancó en el puerto ' + port, 'success')
+      printLog('Servidor arrancó en el puerto ' + port, 'success', 'start')
     });  
     btnRun.disabled = true
     txtDir.disabled = true

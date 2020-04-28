@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="../assets/css/photon.min.css">
+<link rel="stylesheet" href="../assets/css/styles.css">
+
+<div class="window">
+  <div class="window-content">
+    <div class="padded-more" style="padding-top: 0px;">
+        <label id="lbMessage"></label>
+        <h3 style="margin-top: 5px;">Parámetros</h3>
+        <div class="form-group">
+          <label>Dirección IP</label>
+          <input type="text" class="form-control" placeholder="localhost" id="txtHost">
+        </div>
+        <div class="form-group">
+          <label>Puerto</label>
+          <input type="text" class="form-control" placeholder="3000" id="txtPort">
+        </div>
+        <div class="form-group">
+          <label>Ruta de Directorio Público</label>
+          <input type="text" class="form-control" placeholder="" id="txtDir">
+        </div>
+        <button class="btn btn-mini btn-positive" id="btnRun">Iniciar</button>
+        <button class="btn btn-mini btn-negative" id="btnStop" disabled>Detener</button>
+    </div>
+    <div class="padded-more dark-background">
+      <div id="logs"></div>
+      </div>
+  </div>
+</div>
+
+<script src='../forms/server.js'></script>
